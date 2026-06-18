@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ignition Employee Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#0053db",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#bc4800",
+                    "on-primary-container": "#eeefff",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-surface": "#191c1e",
+                    "surface-container-low": "#f2f4f6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#0b1c30",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#d3e4fe",
+                    "secondary": "#505f76",
+                    "outline-variant": "#c3c6d7",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-container": "#ffede6",
+                    "background": "#f7f9fb",
+                    "primary": "#004ac6",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "primary-fixed": "#dbe1ff",
+                    "surface": "#f7f9fb",
+                    "primary-container": "#2563eb",
+                    "on-secondary-container": "#54647a",
+                    "on-background": "#191c1e",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary-fixed": "#ffdbcd",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-dim": "#d8dadc",
+                    "outline": "#737686",
+                    "inverse-surface": "#2d3133",
+                    "tertiary": "#943700",
+                    "on-surface-variant": "#434655",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb596"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sidebar-width": "260px",
+                    "topbar-height": "64px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "container-padding": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "data-table": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "data-table": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .slide-over-shadow {
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SIDEBAR ANCHOR -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 z-50">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-body-lg">bolt</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">Ignition</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Workforce Management</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg active:scale-95 transition-transform duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Directory
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="lan">lan</span>
+                Departments
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                Time Off
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="pt-4 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-3 px-2">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a corporate HR director in a bright, modern office setting. The lighting is soft and flattering, with a shallow depth of field. High-end business aesthetic with professional attire and a confident, welcoming expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAUBDmJ1Ka9rxT7DtEPCVqKo2lm6krv1yxqZ_ONY2wi4WvwGqHud2GmCCymR4RGo78Jmnr3jYdRugY-LU2E-Ye9vuVNkFv1LKe73Ml-RQK3vsRJLYAhBddb9_SbPJ0zWlubQFX60t_rkCWVB2YdIemjMooIF-gzVZ85pvilXnUKFkz_53A_k9iTGxaZMz8NsKR7idQCDtxY_Mp_yHfkuWP9dzQq4QTF_Ed1idewqjlh5cD9M9HG6I-6dUUZtSepZb4UuWjbWR5V1qj"/>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md truncate">Alex Sterling</p>
+<p class="text-[11px] text-on-surface-variant truncate">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="ml-sidebar-width min-h-screen">
+<!-- TOP NAVBAR ANCHOR -->
+<header class="fixed top-0 right-0 h-topbar-height w-[calc(100%-260px)] bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-container-padding z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-body-lg">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-md focus:outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all" placeholder="Search employees, roles, or teams..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-outline-variant"></div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md flex items-center gap-2 active:opacity-80 transition-opacity" id="open-slideover">
+<span class="material-symbols-outlined text-body-md">add</span>
+                    Add Employee
+                </button>
+</div>
+</header>
+<!-- DASHBOARD CANVAS -->
+<section class="mt-topbar-height p-container-padding">
+<div class="mb-6 flex items-end justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Employee Directory</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your global workforce across 12 departments.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filters
+                    </button>
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+                        Export CSV
+                    </button>
+</div>
+</div>
+<!-- DATA TABLE CARD -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Name</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Role</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Department</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="A portrait of a male tech professional with glasses in a minimalist workspace. Soft natural light, high-end corporate lifestyle photography. He is wearing a clean charcoal polo shirt. The background shows a hint of a modern glass office." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7mpktAA_3iKsyzSrMO5LeK5I7xS-NsqOZJa5Ox7cYEw7tNWViPR_dwKQDUKkYeIZMglaS1-TCmu7tmX3IfBMaEHpZWPrG5LXxljGIIlJXgA1Bft0_Qgd4ad09bd_EtkL76R87RjFh09LA5jMXzISX4KJIbmqGZ6BeYcD5gkR-pYpOZuAR2zqTDsmJV6qyyNufjMqeJQ3786EQQpASrNbmgioWaOZdYF5k9mUJkqf1D444olYMJFPRr2PaPUrfC-dWYCGPY27-MOWC"/>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Jordan Rivera</p>
+<p class="text-[11px] text-on-surface-variant">jordan.r@ignition.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Senior Product Designer</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Product</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-[#10B9811A] text-[#059669] text-[11px] font-bold rounded-full uppercase">Active</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="A portrait of a female software engineer in a modern workspace. She has a bright smile and is wearing professional casual attire. The lighting is clean and vibrant, suggesting an empowering startup environment. High contrast and minimalist styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoxm8bFf9ytj8TZ5NeArgEPvMAw7Z2t5aTmerhQHHXq_uEHhL1ymKpu0UhxCtKAZ-DSpi_cezPaEzG77_qJUX1h_JIdXOSSBMhDMwgiANEs7VFGXXWJwdJEEHwXIN1WJKOMcKTmNaI3lzbbpsKfq5j-qBPsgty_dzOQItLLVOBhgx6hJpH-GhtDOxyac-Zn0HoJuhrSQl3zQOhuqa_tw5GefejJxlbhcsCITlXItmzmEigRwC4DjUklj3gUppqH-jOUqsJwXKsSi-q"/>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Elena Vostova</p>
+<p class="text-[11px] text-on-surface-variant">e.vostova@ignition.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Lead Backend Developer</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Engineering</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-[#10B9811A] text-[#059669] text-[11px] font-bold rounded-full uppercase">Active</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="A portrait of a business executive in a high-key, modern office setting. Sharp focus, professional studio lighting. The aesthetic is clean, corporate, and minimalist. They are wearing a navy blazer and appear poised and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwAsswKYM_AIt2zcx3dCMtTkwyvn81AmHb3tHpHNvR-a3GTGQMpUjUktyZLEArZL-lLISXoI25x-12uAxQk3HtJNAqW-PZTRq7IeUxFa-ZqSiOBuYW54ioFqFaXg_iKj9XLLoIT85kFAGomEYA6qW5tCbW5VsYzqMJAjZZuMtdGb-EoB-eBwLql9P-EgU1w4YpKF3TBrYww-49uQB2oNUgUto7uLUVhH7_nqNGPrOonb26Y6M35eHA3oywd6l3VPPf6QsloIMjrrgm"/>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Marcus Thorne</p>
+<p class="text-[11px] text-on-surface-variant">m.thorne@ignition.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Chief Operations Officer</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Operations</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-[#F59E0B1A] text-[#D97706] text-[11px] font-bold rounded-full uppercase">On Leave</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="A professional woman of Asian descent in a bright creative studio environment. Soft-focus background with vibrant accent colors. She is wearing a modern cream-colored blouse. The image radiates competence and modern leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9hg4yBraJrD0c0bjyYuxbKQP-oBXaYeqJk2TrN28o9xMHzEzQrhFlWWUwGd-zjrnvhrO7EbuFriX2D8egXDpSHRBsyJzXkLvvjNugi9ueZt97ctv78cVZX-UOut9N8m8x4oJEhJINtpMmIondqv_MFSiNdFCIX51mDIwbyFSrQzg9VBFfdRgsGPprSd2Z6rJJIBg5X1HfSatPGQbx8uY0LO3mrIqxBxCB1bIyfwAxe__EtmLWA1yZfXD9iFsBzQ-YG3b2aaVB9Gqv"/>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Suki Tanaka</p>
+<p class="text-[11px] text-on-surface-variant">suki.t@ignition.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">HR Manager</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Human Resources</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-[#10B9811A] text-[#059669] text-[11px] font-bold rounded-full uppercase">Active</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="A portrait of a male marketing professional in a stylish urban office. Warm lighting, professional aesthetic. Minimalist desk and tech equipment in the background. He is wearing a dark olive sweater and looking directly at the camera with a friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPDJ3hnUhEsEWW7isGJG6BlvMX92a5ARrdzGVVfHsAydP10u3uXH61PXjwottQEbr53eT-vTvCyXAUqdNbjy-G9035MTHObF1LTQstkwCpyU7c8Te6e8yUgsQ3psmJrxr9q4lLnEx_CRwPxbdyJ-mdY4BDpPY-3y5EDIAjmmn1ukmKvhYPNkY-TBEAYhURBgkEmrNvuO9Db3SxPBFsrvzeKLWL-JwLn_B6X1T4KQkilzjZbPc0wqzrXGgqtQFfsCkCIwn5wxTabBn1"/>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">David Chen</p>
+<p class="text-[11px] text-on-surface-variant">d.chen@ignition.io</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Growth Specialist</td>
+<td class="px-6 py-4 font-data-table text-data-table text-on-surface">Marketing</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-[#10B9811A] text-[#059669] text-[11px] font-bold rounded-full uppercase">Active</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-high rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- PAGINATION -->
+<div class="px-6 py-4 bg-surface-container-low flex items-center justify-between">
+<p class="text-body-md font-body-md text-on-surface-variant">Showing 1 to 5 of 248 employees</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-lowest disabled:opacity-50 transition-colors" disabled="">Previous</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded font-bold transition-opacity hover:opacity-90">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-lowest transition-colors">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-lowest transition-colors">3</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-lowest transition-colors">Next</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- SLIDE-OVER PANEL: ADD NEW EMPLOYEE -->
+<div class="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60] transition-opacity duration-300" id="slideover-overlay"></div>
+<aside class="fixed right-0 top-0 h-screen w-full sm:w-[450px] bg-surface-container-lowest slide-over-shadow z-[70] transform transition-transform duration-300 ease-in-out translate-x-0" id="slideover-panel">
+<div class="h-full flex flex-col">
+<!-- Header -->
+<div class="p-6 border-b border-outline-variant flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Add New Employee</h3>
+<p class="text-body-md text-on-surface-variant">Enter details to onboard a new team member.</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors" id="close-slideover">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Full Name</label>
+<input class="w-full border-outline-variant rounded-lg p-3 text-body-md focus:ring-primary focus:border-primary" placeholder="e.g. Sarah Jenkins" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Email Address</label>
+<input class="w-full border-outline-variant rounded-lg p-3 text-body-md focus:ring-primary focus:border-primary" placeholder="e.g. s.jenkins@ignition.io" type="email"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Role</label>
+<select class="w-full border-outline-variant rounded-lg p-3 text-body-md focus:ring-primary focus:border-primary">
+<option>Select Role</option>
+<option>Software Engineer</option>
+<option>Product Designer</option>
+<option>HR Manager</option>
+<option>Marketing Specialist</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Department</label>
+<select class="w-full border-outline-variant rounded-lg p-3 text-body-md focus:ring-primary focus:border-primary">
+<option>Select Department</option>
+<option>Engineering</option>
+<option>Product</option>
+<option>Marketing</option>
+<option>Operations</option>
+<option>HR</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Start Date</label>
+<input class="w-full border-outline-variant rounded-lg p-3 text-body-md focus:ring-primary focus:border-primary" type="date"/>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-[12px] text-on-surface-variant">Adding an employee will automatically trigger an invitation email to the provided address.</p>
+</div>
+</div>
+</form>
+</div>
+<!-- Footer -->
+<div class="p-6 border-t border-outline-variant flex items-center justify-end gap-3 bg-surface-container-low">
+<button class="px-6 py-2.5 text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" id="cancel-slideover">Cancel</button>
+<button class="px-8 py-2.5 bg-primary text-on-primary rounded font-bold text-label-md active:opacity-80 transition-opacity">Create Profile</button>
+</div>
+</div>
+</aside>
+<script>
+        const slideover = document.getElementById('slideover-panel');
+        const overlay = document.getElementById('slideover-overlay');
+        const closeBtn = document.getElementById('close-slideover');
+        const cancelBtn = document.getElementById('cancel-slideover');
+        const openBtn = document.getElementById('open-slideover');
+
+        function toggleSlideover(isOpen) {
+            if (isOpen) {
+                slideover.classList.remove('translate-x-full');
+                slideover.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                overlay.classList.add('block');
+            } else {
+                slideover.classList.remove('translate-x-0');
+                slideover.classList.add('translate-x-full');
+                overlay.classList.remove('block');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        openBtn.addEventListener('click', () => toggleSlideover(true));
+        closeBtn.addEventListener('click', () => toggleSlideover(false));
+        cancelBtn.addEventListener('click', () => toggleSlideover(false));
+        overlay.addEventListener('click', () => toggleSlideover(false));
+    </script>
+</body></html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Departments | Ignition Workforce Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        /* Custom scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-primary-fixed": "#00174b",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container": "#eceef0",
+                      "on-secondary-container": "#54647a",
+                      "inverse-surface": "#2d3133",
+                      "surface-bright": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-secondary-fixed": "#0b1c30",
+                      "primary": "#004ac6",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary": "#943700",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface-variant": "#434655",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1e",
+                      "on-primary-container": "#eeefff",
+                      "error": "#ba1a1a",
+                      "secondary": "#505f76",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#b4c5ff",
+                      "tertiary-container": "#bc4800",
+                      "surface-variant": "#e0e3e5",
+                      "outline": "#737686",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary-container": "#d0e1fb",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "outline-variant": "#c3c6d7",
+                      "surface-container-high": "#e6e8ea",
+                      "surface": "#f7f9fb",
+                      "surface-tint": "#0053db",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d8dadc",
+                      "tertiary-fixed": "#ffdbcd",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary-container": "#ffede6",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#eff1f3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "260px",
+                      "gutter": "16px",
+                      "container-padding": "24px",
+                      "topbar-height": "64px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "data-table": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "data-table": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SIDE NAV BAR -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-lowest dark:bg-surface-dim border-r border-outline-variant dark:border-outline flex flex-col p-4 z-50">
+<div class="mb-8 px-2">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">Ignition</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Workforce Management</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Directory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">lan</span>
+<span class="font-label-md text-label-md">Departments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-label-md">Time Off</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate manager in a bright, modern office setting, soft natural lighting, high-end commercial photography style, clean white background, neutral blue business attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtFb6VXH9c615wDtDONB4muDSAGcBC-odnOsLqugUvQBZF_OLOCcp2Zi_y-cb3qiyRq8SMllVGxfmLczqt1Y4jh50E_kj0X_knwnnh3PiZhGHhr6gwNsOup72vyhRoX3kPkg8AB7szx4frp3DufuVON078Y-IoyXAoxTW8_oUeQisK0FaqkHQokhfKvH_re5Zt4lzaEDiyoGBbkEshISka35MJn75JQP41Qu8ywCJgbaeY49VSshwasEbjodcnb2wZgVHJMvFg5ooZ"/>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md truncate text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant truncate">Admin Access</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TOP NAV BAR -->
+<header class="fixed top-0 right-0 h-topbar-height w-[calc(100%-260px)] bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex items-center justify-between px-container-padding z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-md focus:ring-2 focus:ring-primary/20" placeholder="Search departments or leads..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md hover:bg-primary-container transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Add Department
+            </button>
+</div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="ml-sidebar-width pt-topbar-height min-h-screen">
+<div class="p-container-padding max-w-[1400px] mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Departments</h2>
+<p class="text-body-lg text-on-surface-variant mt-1">Manage organizational structures, heads of departments, and team growth across Ignition.</p>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center gap-5">
+<div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">corporate_fare</span>
+</div>
+<div>
+<p class="text-label-md text-on-surface-variant">Total Departments</p>
+<h3 class="text-headline-md font-bold text-on-surface">12</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center gap-5">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<div>
+<p class="text-label-md text-on-surface-variant">Average Team Size</p>
+<h3 class="text-headline-md font-bold text-on-surface">18.4</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center gap-5">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<div>
+<p class="text-label-md text-on-surface-variant">Quarterly Growth</p>
+<h3 class="text-headline-md font-bold text-on-surface">+8.2%</h3>
+</div>
+</div>
+</div>
+<!-- Departments Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Department Card: Engineering -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">developer_mode_tv</span>
+</div>
+<span class="px-2 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded uppercase">Active</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-1 group-hover:text-primary transition-colors">Engineering</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-6">Core product development, infrastructure, and technical operations.</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female engineering lead, focused and professional, wearing glasses, tech-savvy environment with blurred monitors in the background, cool lighting, high-fidelity corporate portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASbnPviXlBtkqe2ydU_i6KhiYkzvyfDsEnkvvY6w9xjCGfwHClWxWP6HzLE2sqbf3MpeqE4oNLVGR-xNu9fj4cGoailXuCrSgkRD1v3-FUTsifwuO6zGjQSdaD9rA3fHyBkDWV_RLE2P-XaLXzTYDs5G-9yqn98i7X8W-nHmnhPs7d1eIUCKntGYNlSYh0bA9HnySSQYCXi9i_TVtk4A8SDBbDxqklG1qQKGkAchXXjzGWBGzHeBCFZlSls6LJWjsPorlxqYFu5Nnn"/>
+</div>
+<div class="leading-tight">
+<p class="text-label-md text-on-surface">Sarah Chen</p>
+<p class="text-[10px] text-on-surface-variant">Head of Engineering</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">42</p>
+<p class="text-[10px] text-on-surface-variant">Headcount</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-low text-primary font-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                        View Team <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Department Card: Marketing -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<span class="px-2 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded uppercase">Active</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-1 group-hover:text-primary transition-colors">Marketing</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-6">Brand strategy, user acquisition, and global communications.</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male marketing director, charismatic smile, creative office loft background with vibrant colors, natural sunlight, high-end photography, professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdkrvJnEbsm5HtAiyPk1nILNwSiJBgl8uLi4gVJ3oCJKyNEhBt5tJ7_W2FnoT56y9_kDMl6z4n-pI2ilWZYwRiWSkcjcGscKwz9-Hq-hD9-srY_wDsidP-m-73g7Rvo847cuIXeSN7Gf_nit-g3YGMZEf2uX6sDiWgfOuPgRthT9a1qQ7Ztcc-y7hYOyVK0_uOyWBeHhUNlo-5zLLZCpz1wfcSNUY6MT6kEK_7wP42EsOaayZ-UEmFuMx5jwn_wGG1pR8LXxBQYB5d"/>
+</div>
+<div class="leading-tight">
+<p class="text-label-md text-on-surface">James Wilson</p>
+<p class="text-[10px] text-on-surface-variant">VP Marketing</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">15</p>
+<p class="text-[10px] text-on-surface-variant">Headcount</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-low text-primary font-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                        View Team <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Department Card: Product Design -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<span class="px-2 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded uppercase">Active</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-1 group-hover:text-primary transition-colors">Product Design</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-6">User experience research, visual design, and design systems.</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a creative woman, stylish and modern, minimalist white office background, soft artistic lighting, professional corporate photography, confident expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLcAUzyL8q1JJMnM4mb4URsuamKfXwYLuYN7b7YEIfUS16ig2L-mYtKy2GLiMr3feAoaM032QmUEAzcZGYCChbsPPcJmrTNrBDrn78-P4n_1vmclhYNh58Nfql3M-oZSE9cmV1QaS2W28sdLnjAvcRxvuPjeHw8GNlStJzSrl7Qvjhssxutn9jnZQEbSc9_z4rFEIc9wKu4Fm7uozuMXKrIhU2I3rerVAMJtMyTilWyd-JR9q8RFE2a7BgCFtcYWs601X47MYcuvJ8"/>
+</div>
+<div class="leading-tight">
+<p class="text-label-md text-on-surface">Elena Rodriguez</p>
+<p class="text-[10px] text-on-surface-variant">Design Lead</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">8</p>
+<p class="text-[10px] text-on-surface-variant">Headcount</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-low text-primary font-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                        View Team <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Department Card: Sales -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-700">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="px-2 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded uppercase">Active</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-1 group-hover:text-primary transition-colors">Sales</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-6">Revenue growth, account management, and client partnerships.</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of an energetic sales executive, professional suit, glass boardroom background, sharp focus, bright professional lighting, high-end corporate photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5O2NQeKHfyuzjXS3J3WBzsXEaFsWSPTCB99ejhz2O33C5OD5OuicoUbiYAr8RgdjSXQ9eHweFb--gkkDrkXbSe3BvoEiUHMsfmqj0zg8x1aMgZrSKZzsk4mg4YkEBJvzGvx2lPm95DyvGX5NgMII2sc1-Wx7VRUpByKULxRB0nkXqByYuMEhNZtUteBPeOH8iBHklXvMW-b3pyBgAhuQVtxvNLksh_8Hp-08KF6rrCw3fPch66B6BjuO1tpBB0rmKuqHFaxgPfEXB"/>
+</div>
+<div class="leading-tight">
+<p class="text-label-md text-on-surface">Marcus Thorne</p>
+<p class="text-[10px] text-on-surface-variant">Head of Sales</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">22</p>
+<p class="text-[10px] text-on-surface-variant">Headcount</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-low text-primary font-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                        View Team <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Department Card: HR -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined">person_pin_circle</span>
+</div>
+<span class="px-2 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold rounded uppercase">Review</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-1 group-hover:text-primary transition-colors">Human Resources</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-6">Talent acquisition, employee wellness, and cultural initiatives.</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a friendly HR manager, approachable and professional, warm interior background, natural window light, corporate lifestyle photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD676qrFCvVzmnuZ7zM_NvVSm0rO6G3YmYes8GpPusE83x42jI1cz3oWqS0c3Y22S-a5fqXup-hNFZAbSit1BlW6Pl8Icft06ZTApQ9zL_WVH_5Djh9t4t5xR8ozyfR1Zt98YpMicwTrUXbpMryKMoBnminb18eta11cPYZSNEMFnJwLqk_FhzcMzY_xenjC7PqEgvpTfx5OgKBRiYwSlTcvA4mu1oQY9b0qio64ZqiWJMmY8iXbF_qL3li5GsgDRS3JCutKs403oJw"/>
+</div>
+<div class="leading-tight">
+<p class="text-label-md text-on-surface">Sophia Lee</p>
+<p class="text-[10px] text-on-surface-variant">HR Director</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">6</p>
+<p class="text-[10px] text-on-surface-variant">Headcount</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-low text-primary font-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                        View Team <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Department Card: Finance -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-700">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="px-2 py-1 bg-green-100 text-green-800 text-[10px] font-bold rounded uppercase">Active</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-1 group-hover:text-primary transition-colors">Finance</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-6">Financial planning, budgeting, payroll, and compliance.</p>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a senior male finance officer, experienced and serious, modern financial district background, professional lighting, corporate elite style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGSmw4NdAthkShJsbE-ndz3EDRbCMMArE8DEeI3FxSogvc5e7Pb5jjC0PqFECGrN7TLqrYebWr1K7Oo9jrauawDKkIcQwWKwvSSkMMqiCHbjeS4T-D9ewvmjpukgJNTDQmyZmrv2YYXAztmGZe4ilyd62mmS_0bAbZHGx_Fd5xslV-sc7OwJle_YQoViImBTPgxDkTcZP11heczMEBvyb1LJVjvYCiff-3MVdEwsspso05aer-J2SFj6ZhhiXiIBw_gv56TFWetTHv"/>
+</div>
+<div class="leading-tight">
+<p class="text-label-md text-on-surface">David Miller</p>
+<p class="text-[10px] text-on-surface-variant">CFO</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">5</p>
+<p class="text-[10px] text-on-surface-variant">Headcount</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-low text-primary font-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                        View Team <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Detailed Data Table Section -->
+<div class="mt-12 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between">
+<h5 class="font-headline-sm text-headline-sm">Performance Overview</h5>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+                        Export Report <span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-data-table text-data-table">
+<thead class="bg-surface-container-low text-on-surface-variant">
+<tr>
+<th class="px-6 py-4 font-bold">Department</th>
+<th class="px-6 py-4 font-bold">Manager</th>
+<th class="px-6 py-4 font-bold">Efficiency</th>
+<th class="px-6 py-4 font-bold">Open Positions</th>
+<th class="px-6 py-4 font-bold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 font-bold">Engineering</td>
+<td class="px-6 py-4">Sarah Chen</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+<span class="text-xs text-on-surface-variant">92%</span>
+</div>
+</td>
+<td class="px-6 py-4">4</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 font-bold">Marketing</td>
+<td class="px-6 py-4">James Wilson</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<span class="text-xs text-on-surface-variant">85%</span>
+</div>
+</td>
+<td class="px-6 py-4">2</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4 font-bold">Sales</td>
+<td class="px-6 py-4">Marcus Thorne</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[96%]"></div>
+</div>
+<span class="text-xs text-on-surface-variant">96%</span>
+</div>
+</td>
+<td class="px-6 py-4">6</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Micro-Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Placeholder for real logic - adding subtle hover interactions
+            const cards = document.querySelectorAll('.group');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Logic for custom hover effects if needed
+                });
+            });
+        });
+    </script>
+</body></html>
